@@ -2,6 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import { twJoin } from 'tailwind-merge';
 	import PlayButton from './PlayButton.svelte';
+	import QueueButton from './QueueButton.svelte';
 
 	const styles = tv({
 		slots: {
@@ -11,21 +12,18 @@
 			info: 'absolute z-50 bottom-0 left-0 p-6 flex gap-1 items-center justify-between w-full text-white',
 			artist: 'font-thin text-sm opacity-85',
 			trackTitle: 'font-semibold text-xl',
-      playBtn: 'absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+			playBtn: 'absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+			queueBtn: 'absolute z-10 top-[1rem] right-[1rem]'
 		}
 	});
 
 	let { tracklist, track, classes = '' } = $props();
-	const { container, cover, info, artist, trackTitle, playBtn } = styles();
+	const { container, cover, info, artist, trackTitle, playBtn, queueBtn } = styles();
 </script>
 
 <figure class={twJoin(container(), classes)} aria-labelledby={`song-${track.id}`}>
-	<PlayButton
-		{tracklist}
-		{track}
-		classes={ playBtn() }
-	/>
-  <button type="button" onclick={()=>{tracklist.addTrackToQueue(track)}} class="absolute z-10 top-0 right-0">Queue</button>
+	<PlayButton {tracklist} {track} classes={playBtn()} />
+	<QueueButton {tracklist} {track} classes={queueBtn()} />
 
 	<img
 		src={track.album.cover_big}

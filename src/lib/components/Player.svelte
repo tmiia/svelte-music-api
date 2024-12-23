@@ -10,6 +10,9 @@
 
     audio.addEventListener('ended', ()=> {
       tracklist.isPlaying = false
+      if (tracklist.queueTrack.length > 0) {
+        tracklist.playQueueTrack()
+      }
     })
 
     audio.addEventListener('pause', ()=> {

@@ -17,14 +17,19 @@ export class Tracklist {
   };
 
   addTrackToQueue = (track: Record<string, any>) => {
-    this.queueTrack.push(track);
-    this.playQueueTrack();
+    const isTrackInQueue = this.queueTrack.some(
+      (existingTrack) => existingTrack.id === track.id
+    );
+
+    if (!isTrackInQueue) {
+      this.queueTrack.push(track);
+    }
   };
 
   playQueueTrack = () => {
     if (this.queueTrack.length > 0) {
       this.setCurrentTrack(this.queueTrack[0]);
-      this.queueTrack.splice(0);
+      this.queueTrack.shift();
     }
   };
 }
