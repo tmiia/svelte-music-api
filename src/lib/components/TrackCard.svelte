@@ -25,6 +25,7 @@
 		{track}
 		classes={ playBtn() }
 	/>
+  <button type="button" onclick={()=>{tracklist.addTrackToQueue(track)}} class="absolute z-10 top-0 right-0">Queue</button>
 
 	<img
 		src={track.album.cover_big}

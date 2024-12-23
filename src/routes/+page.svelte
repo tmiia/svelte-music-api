@@ -4,6 +4,7 @@
 	import TrackCard from '$lib/components/TrackCard.svelte';
 	import { tv } from 'tailwind-variants';
 	import { Tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
+	import Player from '$lib/components/Player.svelte';
 
 	const styles = tv({
 		slots: {
@@ -22,6 +23,8 @@
 		);
 		return sortedArtists;
 	}
+
+  $inspect(data)
 
 	const tracklist = new Tracklist();
 	const artists = artistsByFans(data.artists);
@@ -48,9 +51,4 @@
 	</Slider>
 </section>
 
-<section class={section()}>
-	{#if tracklist.currentTrack}
-		<h3>{tracklist.currentTrack.title}</h3>
-		<audio controls autoplay src={tracklist.currentTrack.preview}></audio>
-	{/if}
-</section>
+<Player {tracklist} />

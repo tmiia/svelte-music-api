@@ -9,19 +9,23 @@
 		}
 	});
 
+	let playIcon = $state(false);
+
 	function playPreview(track: Record<string, any>) {
-		tracklist.setCurrentTrack(track);
-    tracklist.isPlaying = true;
+		if (isTrackPlaying()) {
+			tracklist.togglePlayPause();
+		} else {
+			tracklist.setCurrentTrack(track);
+		}
 	}
 
-  function isTrackPlaying() {
-    if (tracklist.currentTrack) {
-      return track.id === tracklist.currentTrack.id
-    }
-    else {
-      return false
-    }
-  }
+	function isTrackPlaying() {
+		return tracklist.currentTrack?.id === track.id && tracklist.isPlaying;
+	}
+
+	$effect(() => {
+		playIcon = isTrackPlaying();
+	});
 
 	let { tracklist, track, classes } = $props();
 	const { btn } = styles();
@@ -33,5 +37,5 @@
 	class={twJoin(btn(), classes)}
 >
 	<span class="sr-only"> Play the track </span>
-	<Play isPlaying={isTrackPlaying()} />
+	<Play isPlaying={playIcon} />
 </button>
