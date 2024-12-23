@@ -11,9 +11,19 @@
 
 	function playPreview(track: Record<string, any>) {
 		tracklist.setCurrentTrack(track);
+    tracklist.isPlaying = true;
 	}
 
-	let { tracklist, track, classes, ...rest } = $props();
+  function isTrackPlaying() {
+    if (tracklist.currentTrack) {
+      return track.id === tracklist.currentTrack.id
+    }
+    else {
+      return false
+    }
+  }
+
+	let { tracklist, track, classes } = $props();
 	const { btn } = styles();
 </script>
 
@@ -23,5 +33,5 @@
 	class={twJoin(btn(), classes)}
 >
 	<span class="sr-only"> Play the track </span>
-	<Play />
+	<Play isPlaying={isTrackPlaying()} />
 </button>

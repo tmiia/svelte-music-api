@@ -23,7 +23,6 @@
 	<PlayButton
 		{tracklist}
 		{track}
-		trackSong={track.preview}
 		classes={ playBtn() }
 	/>
 
