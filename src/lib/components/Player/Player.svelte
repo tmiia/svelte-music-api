@@ -2,6 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import { onMount } from 'svelte';
 	import Timeline from '$lib/components/Player/Timeline.svelte';
+	import Actions from './Actions.svelte';
 
 	let audio: HTMLAudioElement | null = $state(null);
 
@@ -10,7 +11,7 @@
 			container:
 				'z-50 fixed bottom-0 left-0 bg-slate-950/95 w-full py-2 px-4 grid grid-cols-8 gap-x-3 items-center text-white',
 			playerInfo: 'col-span-2',
-			playerActions: 'col-span-1 flex gap-x-2 col-start-3',
+			playerActions: 'col-span-1 col-start-3',
 			playerTimeline: 'col-span-3 col-start-4 h-[5px]',
 			additonalActions: 'col-span-2 flex gap-x-2 col-start-7',
 			audioPlayer: 'hidden'
@@ -72,12 +73,7 @@
 		</figcaption>
 	</figure>
 
-	<menu class={playerActions()}>
-		<li><button type="button">Previous</button></li>
-		<li><button type="button">Play</button></li>
-		<li><button type="button">Next</button></li>
-	</menu>
-
+  <Actions {tracklist} classes={playerActions()} />
 
 	<audio controls autoplay src={url()} bind:this={audio} class={audioPlayer()}></audio>
   <Timeline {audio} classes={playerTimeline()} />
