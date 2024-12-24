@@ -4,6 +4,7 @@
 	import Timeline from '$lib/components/Player/Timeline.svelte';
 	import Actions from './Actions.svelte';
 	import AdditionalActions from './AdditionalActions.svelte';
+	import Info from './Info.svelte';
 
 	let audio: HTMLAudioElement | null = $state(null);
 
@@ -56,24 +57,13 @@
 		}
 	};
 
-
 	let { tracklist } = $props();
 	const { container, playerInfo, playerActions, playerTimeline, additonalActions, audioPlayer } =
 		styles();
 </script>
 
 <section class={container()}>
-	<figure class={playerInfo()}>
-		<!-- {#if tracklist.currentTrack}
-      <img src={tracklist.album.cover_small} alt="Cover image of the {tracklist.album.title} album" />
-    {/if} -->
-		<figcaption>
-			{#if tracklist.currentTrack}
-				<h3>{tracklist.currentTrack.title}</h3>
-				<strong>{tracklist.currentTrack.artist.name}</strong>
-			{/if}
-		</figcaption>
-	</figure>
+	<Info {tracklist} classes={playerInfo()} />
 
   <Actions {tracklist} classes={playerActions()} />
 
