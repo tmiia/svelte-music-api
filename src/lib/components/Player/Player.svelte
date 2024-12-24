@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import Timeline from '$lib/components/Player/Timeline.svelte';
 	import Actions from './Actions.svelte';
+	import AdditionalActions from './AdditionalActions.svelte';
 
 	let audio: HTMLAudioElement | null = $state(null);
 
@@ -23,7 +24,7 @@
 
       audio.addEventListener('ended', () => {
         tracklist.isPlaying = false;
-        
+
         if (tracklist.queueTrack.length > 0) {
           tracklist.playQueueTrack();
         }
@@ -79,8 +80,5 @@
 	<audio controls autoplay src={url()} bind:this={audio} class={audioPlayer()}></audio>
   <Timeline {audio} classes={playerTimeline()} />
 
-	<menu class={additonalActions()}>
-		<li>{tracklist.queueTrack.length}</li>
-		<li>List of queue</li>
-	</menu>
+  <AdditionalActions {tracklist} classes={additonalActions()} />
 </section>
