@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import { onMount } from 'svelte';
-	import Timeline from './Timeline.svelte';
+	import Timeline from '$lib/components/Player/Timeline.svelte';
 
 	let audio: HTMLAudioElement | null = $state(null);
 
@@ -78,8 +78,8 @@
 		<li><button type="button">Next</button></li>
 	</menu>
 
-	<audio controls autoplay src={url()} bind:this={audio} class={audioPlayer()}></audio>
 
+	<audio controls autoplay src={url()} bind:this={audio} class={audioPlayer()}></audio>
   <Timeline {audio} classes={playerTimeline()} />
 
 	<menu class={additonalActions()}>

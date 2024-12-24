@@ -4,7 +4,7 @@
 	import TrackCard from '$lib/components/TrackCard.svelte';
 	import { tv } from 'tailwind-variants';
 	import { Tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
-	import Player from '$lib/components/Player.svelte';
+	import Player from '$lib/components/Player/Player.svelte';
 
 	const styles = tv({
 		slots: {
