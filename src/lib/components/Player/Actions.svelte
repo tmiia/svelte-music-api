@@ -3,8 +3,7 @@
 	import { twJoin } from 'tailwind-merge';
 	import Play from './Buttons/Play.svelte';
 	import Next from './Buttons/Next.svelte';
-
-	let audio: HTMLAudioElement | null = $state(null);
+	import Previous from './Buttons/Previous.svelte';
 
 	const styles = tv({
 		slots: {
@@ -17,7 +16,7 @@
 </script>
 
 <menu class={twJoin(classes, container())}>
-	<li><button type="button">Previous</button></li>
+	<li><Previous {tracklist} /></li>
 	<li><Play {tracklist} /></li>
 	<li><Next {tracklist} /></li>
 </menu>
