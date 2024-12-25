@@ -12,63 +12,53 @@
 	const styles = tv({
 		slots: {
 			container:
-				'z-50 fixed bottom-0 left-0 bg-slate-950/95 w-full py-2 px-4 grid grid-cols-8 gap-x-3 items-center text-white',
+				'z-50 fixed bottom-0 left-0 bg-slate-950/95 w-full py-2 px-4 grid grid-cols-6 gap-x-2 lg:grid-cols-8 lg:gap-x-3 items-center text-white',
 			playerInfo: 'col-span-2',
-			playerActions: 'col-span-1 col-start-3',
-			playerTimeline: 'col-span-3 col-start-4 h-[5px]',
-			additonalActions: 'col-span-2 flex gap-x-2 col-start-7',
+			playerTimeline: 'w-full',
+			main: 'col-span-3 col-start-3 lg:col-span-4 flex flex-col lg:flex-row items-center space-y-2 lg:space-x-4 w-full',
+			additionalActions: 'col-span-1 col-start-6 lg:col-span-2 lg:col-start-7 flex gap-x-2',
 			audioPlayer: 'hidden'
 		}
 	});
 
-	onMount(() => {
-		if (audio != null || audio != undefined) {
+  onMount(() => {
+		if (audio) {
+			const handleEnded = () => {
+				audioManager.isPlaying = false;
+				if (audioManager.queueTrack.length > 0) {
+					audioManager.playQueueTrack();
+				}
+			};
 
-      audio.addEventListener('ended', () => {
-        audioManager.isPlaying = false;
+			const handlePause = () => { audioManager.isPlaying = false; };
+			const handlePlay = () => { audioManager.isPlaying = true; };
 
-        if (audioManager.queueTrack.length > 0) {
-          audioManager.playQueueTrack();
-        }
-      });
+			audio.addEventListener('ended', handleEnded);
+			audio.addEventListener('pause', handlePause);
+			audio.addEventListener('play', handlePlay);
 
-      audio.addEventListener('pause', () => {
-        audioManager.isPlaying = false;
-      });
-
-      audio.addEventListener('play', () => {
-        audioManager.isPlaying = true;
-      });
-    }
+			return () => {
+				audio?.removeEventListener('ended', handleEnded);
+				audio?.removeEventListener('pause', handlePause);
+				audio?.removeEventListener('play', handlePlay);
+			};
+		}
 	});
 
 	$effect(() => {
-		if (audioManager.isPlaying) {
-      audio?.play();
-		} else {
-			audio?.pause();
-		}
+		audioManager.isPlaying ? audio?.play() : audio?.pause();
 	});
 
-	const url = () => {
-		if (audioManager.currentTrack) {
-			return audioManager.currentTrack.preview;
-		} else {
-			return '';
-		}
-	};
-
-	const { container, playerInfo, playerActions, playerTimeline, additonalActions, audioPlayer } =
+	const { container, playerInfo, main, playerTimeline, additionalActions, audioPlayer } =
 		styles();
 </script>
 
 <section class={container()}>
 	<Info classes={playerInfo()} />
-
-  <Actions classes={playerActions()} />
-
-	<audio controls autoplay src={url()} bind:this={audio} class={audioPlayer()}></audio>
-  <Timeline {audio} classes={playerTimeline()} />
-
-  <AdditionalActions classes={additonalActions()} />
+  <div class={main()}>
+    <Actions />
+    <audio controls autoplay src={audioManager.currentTrack?.preview ?? ''} bind:this={audio} class={audioPlayer()}></audio>
+    <Timeline {audio} classes={playerTimeline()} />
+  </div>
+  <AdditionalActions classes={additionalActions()} />
 </section>
