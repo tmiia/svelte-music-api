@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import { twJoin } from 'tailwind-merge';
-  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
+  import { audioManager } from '$lib/components/AudioManager/AudioManager.svelte';
 	import BlankImage from '$lib/icons/blankImage.svelte';
 
 	const styles = tv({
@@ -19,15 +19,15 @@
 </script>
 
 <figure class={twJoin( classes, container() )}>
-  {#if tracklist.currentTrack}
-    <img class={cover()} src={tracklist.currentTrack.album.cover_small} alt="Cover image of the {tracklist.currentTrack.album.title} album" />
+  {#if audioManager.currentTrack}
+    <img class={cover()} src={audioManager.currentTrack.album.cover_small} alt="Cover image of the {audioManager.currentTrack.album.title} album" />
     {:else}
       <BlankImage />
   {/if}
   <figcaption class={textContainer()}>
-    {#if tracklist.currentTrack}
-      <h3 class={title()}>{tracklist.currentTrack.title}</h3>
-      <strong class={artist()}>{tracklist.currentTrack.artist.name}</strong>
+    {#if audioManager.currentTrack}
+      <h3 class={title()}>{audioManager.currentTrack.title}</h3>
+      <strong class={artist()}>{audioManager.currentTrack.artist.name}</strong>
       {:else}
       <h3 class={title()}>Select a song by</h3>
       <strong class={artist()}>Any artist</strong>

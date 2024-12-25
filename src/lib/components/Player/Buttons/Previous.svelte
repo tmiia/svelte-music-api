@@ -2,7 +2,7 @@
 	import Previous from '$lib/icons/previous.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import { tv } from 'tailwind-variants';
-  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
+  import { audioManager } from '$lib/components/AudioManager/AudioManager.svelte';
 
 	const styles = tv({
 		slots: {
@@ -13,11 +13,11 @@
 	let isDisabled = $state(true);
 
 	$effect(() => {
-		isDisabled = tracklist.history.length === 0;
+		isDisabled = audioManager.history.length === 0;
 	});
 
 	const onclick = () => {
-		tracklist.playHistoryTrack();
+		audioManager.playHistoryTrack();
 	};
 
 	let { classes = '' } = $props();

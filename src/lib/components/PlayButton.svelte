@@ -2,7 +2,8 @@
 	import Play from '$lib/icons/play.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import { tv } from 'tailwind-variants';
-  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
+  import { audioManager, type Track } from '$lib/components/AudioManager/AudioManager.svelte';
+
 
 	const styles = tv({
 		slots: {
@@ -12,16 +13,16 @@
 
 	let playIcon = $state(false);
 
-	function playPreview(track: Record<string, any>) {
+	function playPreview(track: Track) {
 		if (isTrackPlaying()) {
-			tracklist.togglePlayPause();
+			audioManager.togglePlayPause();
 		} else {
-			tracklist.setCurrentTrack(track);
+			audioManager.setCurrentTrack(track);
 		}
 	}
 
 	function isTrackPlaying() {
-		return tracklist.currentTrack?.id === track.id && tracklist.isPlaying;
+		return audioManager.currentTrack?.id === track.id && audioManager.isPlaying;
 	}
 
 	$effect(() => {

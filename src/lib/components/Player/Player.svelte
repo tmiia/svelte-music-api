@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import { onMount } from 'svelte';
-  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
+  import { audioManager } from '$lib/components/AudioManager/AudioManager.svelte';
 	import Timeline from '$lib/components/Player/Timeline.svelte';
 	import Actions from './Actions.svelte';
 	import AdditionalActions from './AdditionalActions.svelte';
@@ -25,25 +25,25 @@
 		if (audio != null || audio != undefined) {
 
       audio.addEventListener('ended', () => {
-        tracklist.isPlaying = false;
+        audioManager.isPlaying = false;
 
-        if (tracklist.queueTrack.length > 0) {
-          tracklist.playQueueTrack();
+        if (audioManager.queueTrack.length > 0) {
+          audioManager.playQueueTrack();
         }
       });
 
       audio.addEventListener('pause', () => {
-        tracklist.isPlaying = false;
+        audioManager.isPlaying = false;
       });
 
       audio.addEventListener('play', () => {
-        tracklist.isPlaying = true;
+        audioManager.isPlaying = true;
       });
     }
 	});
 
 	$effect(() => {
-		if (tracklist.isPlaying) {
+		if (audioManager.isPlaying) {
       audio?.play();
 		} else {
 			audio?.pause();
@@ -51,8 +51,8 @@
 	});
 
 	const url = () => {
-		if (tracklist.currentTrack) {
-			return tracklist.currentTrack.preview;
+		if (audioManager.currentTrack) {
+			return audioManager.currentTrack.preview;
 		} else {
 			return '';
 		}

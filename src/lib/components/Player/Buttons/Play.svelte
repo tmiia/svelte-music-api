@@ -2,7 +2,7 @@
 	import Play from '$lib/icons/play.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import { tv } from 'tailwind-variants';
-  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
+  import { audioManager } from '$lib/components/AudioManager/AudioManager.svelte';
 
 	const styles = tv({
 		slots: {
@@ -14,15 +14,15 @@
 	let isDisabled = $state(true);
 
 	$effect(() => {
-		playIcon = tracklist.isPlaying;
+		playIcon = audioManager.isPlaying;
 	});
 
   $effect(() => {
-		isDisabled = tracklist.currentTrack === null;
+		isDisabled = audioManager.currentTrack === null;
 	});
 
 	const onclick = () => {
-		tracklist.togglePlayPause();
+		audioManager.togglePlayPause();
 	};
 
 	let { classes = '' } = $props();

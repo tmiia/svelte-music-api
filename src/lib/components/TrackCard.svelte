@@ -3,7 +3,6 @@
 	import { twJoin } from 'tailwind-merge';
 	import PlayButton from './PlayButton.svelte';
 	import QueueButton from './QueueButton.svelte';
-  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 
 	const styles = tv({
 		slots: {

@@ -2,7 +2,7 @@
  * Represents a track from the Deezer API
  * @see https://developers.deezer.com/api/track
  */
-interface Track {
+export interface Track {
   id: number;
   title: string;
   duration: number;
@@ -29,7 +29,7 @@ interface Track {
 /**
  * Manages the play / pause state and track queue for the audio player
  */
-export class Tracklist {
+export class AudioManager {
   currentTrack: Track | null = $state(null);
   queueTrack: Track[] = $state([]);
   /** Previously played tracks */
@@ -123,4 +123,4 @@ export class Tracklist {
 }
 
 
-export const tracklist = new Tracklist();
+export const audioManager = new AudioManager();

@@ -3,8 +3,6 @@
 	import Slider from '$lib/components/Slider.svelte';
 	import TrackCard from '$lib/components/TrackCard.svelte';
 	import { tv } from 'tailwind-variants';
-	import { Tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
-	import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 	import Player from '$lib/components/Player/Player.svelte';
 
 	const styles = tv({
@@ -27,7 +25,6 @@
 
 	$inspect(data);
 
-	// const tracklist = new Tracklist();
 	const artists = artistsByFans(data.artists);
 </script>
 

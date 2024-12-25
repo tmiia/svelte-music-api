@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import { twJoin } from 'tailwind-merge';
-  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
+  import { audioManager } from '$lib/components/AudioManager/AudioManager.svelte';
 	import ListQueue from '$lib/icons/listQueue.svelte';
 
 	const styles = tv({
@@ -19,8 +19,8 @@
 
 <menu class={twJoin(classes, container())}>
   <li class={listBtn()}>
-    {#if tracklist.queueTrack.length > 0}
-      <span class={dot()}>{tracklist.queueTrack.length}</span>
+    {#if audioManager.queueTrack.length > 0}
+      <span class={dot()}>{audioManager.queueTrack.length}</span>
     {/if}
     <ListQueue />
   </li>
