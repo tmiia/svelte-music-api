@@ -3,6 +3,7 @@
 	import { twJoin } from 'tailwind-merge';
 	import PlayButton from './PlayButton.svelte';
 	import QueueButton from './QueueButton.svelte';
+  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 
 	const styles = tv({
 		slots: {
@@ -17,13 +18,13 @@
 		}
 	});
 
-	let { tracklist, track, classes = '' } = $props();
+	let { track, classes = '' } = $props();
 	const { container, cover, info, artist, trackTitle, playBtn, queueBtn } = styles();
 </script>
 
 <figure class={twJoin(container(), classes)} aria-labelledby={`song-${track.id}`}>
-	<PlayButton {tracklist} {track} classes={playBtn()} />
-	<QueueButton {tracklist} {track} classes={queueBtn()} />
+	<PlayButton {track} classes={playBtn()} />
+	<QueueButton {track} classes={queueBtn()} />
 
 	<img
 		src={track.album.cover_big}

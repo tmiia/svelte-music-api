@@ -3,6 +3,7 @@
 	import Queue from '$lib/icons/queue.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import { tv } from 'tailwind-variants';
+  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 
 	const styles = tv({
 		slots: {
@@ -10,7 +11,7 @@
 		}
 	});
 
-	let { tracklist, track, classes = '' } = $props();
+	let { track, classes = '' } = $props();
 	const { btn } = styles();
 </script>
 

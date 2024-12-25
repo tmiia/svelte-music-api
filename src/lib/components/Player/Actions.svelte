@@ -11,12 +11,12 @@
 		}
 	});
 
-	let { tracklist, classes = '' } = $props();
+	let { classes = '' } = $props();
 	const { container } = styles();
 </script>
 
 <menu class={twJoin(classes, container())}>
-	<li><Previous {tracklist} /></li>
-	<li><Play {tracklist} /></li>
-	<li><Next {tracklist} /></li>
+	<li><Previous /></li>
+	<li><Play /></li>
+	<li><Next /></li>
 </menu>

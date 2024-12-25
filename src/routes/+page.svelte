@@ -4,6 +4,7 @@
 	import TrackCard from '$lib/components/TrackCard.svelte';
 	import { tv } from 'tailwind-variants';
 	import { Tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
+	import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 	import Player from '$lib/components/Player/Player.svelte';
 
 	const styles = tv({
@@ -17,16 +18,16 @@
 
 	const tracks = data.playlist.tracks.data;
 
-	function artistsByFans(artists: any[]) {
+	const artistsByFans = (artists: any[]) => {
 		const sortedArtists = artists.sort(
 			(a: { nb_fan: number }, b: { nb_fan: number }) => b.nb_fan - a.nb_fan
 		);
 		return sortedArtists;
-	}
+	};
 
-  $inspect(data)
+	$inspect(data);
 
-	const tracklist = new Tracklist();
+	// const tracklist = new Tracklist();
 	const artists = artistsByFans(data.artists);
 </script>
 
@@ -37,7 +38,7 @@
 <section class={section()}>
 	<Slider>
 		{#each tracks as track}
-			<TrackCard {tracklist} {track} classes="flex-1" />
+			<TrackCard {track} classes="flex-1" />
 		{/each}
 	</Slider>
 </section>
@@ -51,4 +52,4 @@
 	</Slider>
 </section>
 
-<Player {tracklist} />
+<Player />

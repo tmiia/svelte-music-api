@@ -2,6 +2,7 @@
 	import Previous from '$lib/icons/previous.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import { tv } from 'tailwind-variants';
+  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 
 	const styles = tv({
 		slots: {
@@ -19,7 +20,7 @@
 		tracklist.playHistoryTrack();
 	};
 
-	let { tracklist, classes = '' } = $props();
+	let { classes = '' } = $props();
 	const { btn } = styles();
 </script>
 

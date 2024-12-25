@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import { onMount } from 'svelte';
+  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 	import Timeline from '$lib/components/Player/Timeline.svelte';
 	import Actions from './Actions.svelte';
 	import AdditionalActions from './AdditionalActions.svelte';
@@ -57,18 +58,17 @@
 		}
 	};
 
-	let { tracklist } = $props();
 	const { container, playerInfo, playerActions, playerTimeline, additonalActions, audioPlayer } =
 		styles();
 </script>
 
 <section class={container()}>
-	<Info {tracklist} classes={playerInfo()} />
+	<Info classes={playerInfo()} />
 
-  <Actions {tracklist} classes={playerActions()} />
+  <Actions classes={playerActions()} />
 
 	<audio controls autoplay src={url()} bind:this={audio} class={audioPlayer()}></audio>
   <Timeline {audio} classes={playerTimeline()} />
 
-  <AdditionalActions {tracklist} classes={additonalActions()} />
+  <AdditionalActions classes={additonalActions()} />
 </section>

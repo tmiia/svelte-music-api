@@ -2,6 +2,7 @@
 	import Next from '$lib/icons/next.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import { tv } from 'tailwind-variants';
+  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 
 	const styles = tv({
 		slots: {
@@ -19,7 +20,7 @@
 		tracklist.playQueueTrack();
 	};
 
-	let { tracklist, classes = '' } = $props();
+	let { classes = '' } = $props();
 	const { btn } = styles();
 </script>
 

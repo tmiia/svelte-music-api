@@ -2,6 +2,7 @@
 	import Play from '$lib/icons/play.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import { tv } from 'tailwind-variants';
+  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 
 	const styles = tv({
 		slots: {
@@ -27,7 +28,7 @@
 		playIcon = isTrackPlaying();
 	});
 
-	let { tracklist, track, classes } = $props();
+	let { track, classes } = $props();
 	const { btn } = styles();
 </script>
 

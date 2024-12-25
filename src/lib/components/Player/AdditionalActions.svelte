@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import { twJoin } from 'tailwind-merge';
+  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 	import ListQueue from '$lib/icons/listQueue.svelte';
 
 	const styles = tv({
@@ -12,7 +13,7 @@
 	});
 
 
-	let { tracklist, classes = '' } = $props();
+	let { classes = '' } = $props();
 	const { container, listBtn, dot } = styles();
 </script>
 

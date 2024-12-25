@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import { twJoin } from 'tailwind-merge';
+  import { tracklist } from '$lib/components/Tracklist/Tracklist.svelte';
 	import BlankImage from '$lib/icons/blankImage.svelte';
 
 	const styles = tv({
@@ -13,7 +14,7 @@
 		}
 	});
 
-	let { tracklist, classes = '' } = $props();
+	let { classes = '' } = $props();
 	const { container, cover, textContainer, title, artist } = styles();
 </script>
 
