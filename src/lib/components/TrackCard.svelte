@@ -7,8 +7,8 @@
 	const styles = tv({
 		slots: {
 			container:
-				'relative md:min-w-[350px] md:min-h-[390px] md:max-w-[350px] md:max-h-[390px] rounded-3xl overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-slate-900 after:opacity-45',
-			cover: 'w-full h-full',
+				'relative min-w-[18rem] lg:min-w-[22rem] rounded-3xl overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-slate-900 after:opacity-45',
+			cover: 'w-full h-full aspect-[7/8] object-cover',
 			info: 'absolute z-50 bottom-0 left-0 p-6 flex gap-1 items-center justify-between w-full text-white',
 			artist: 'font-thin text-sm opacity-85',
 			trackTitle: 'font-semibold text-xl',
