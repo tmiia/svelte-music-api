@@ -30,12 +30,12 @@ export interface Track {
  * Manages the play / pause state and track queue for the audio player
  */
 export class AudioManager {
-  currentTrack: Track | null = $state(null);
-  queueTrack: Track[] = $state([]);
+  public currentTrack: Track | null = $state(null);
+  public queueTrack: Track[] = $state([]);
   /** Previously played tracks */
-  history: Track[] = $state([]);
+  public history: Track[] = $state([]);
 
-  isPlaying = $state(false);
+  public isPlaying = $state(false);
 
   /** Maximum number of tracks to keep in history */
   private readonly MAX_HISTORY_SIZE = 50;
@@ -45,7 +45,7 @@ export class AudioManager {
    * @param track - The track to play
    * @throws Error if track is invalid or missing required properties
    */
-  setCurrentTrack = (track: Track) => {
+  public setCurrentTrack = (track: Track) => {
     if (!track?.id || !track?.preview) {
       throw new Error('Invalid track: missing required properties');
     }
@@ -58,14 +58,14 @@ export class AudioManager {
   /**
    * Toggles between play and pause states
    */
-  togglePlayPause = () => {
+  public togglePlayPause = () => {
     this.isPlaying = !this.isPlaying;
   };
 
   /**
    * Change the states of isPlaying to false
    */
-  pause = () => {
+  public pause = () => {
     this.isPlaying = false;
   };
 
@@ -73,7 +73,7 @@ export class AudioManager {
    * Adds a track to the queue list if not already present
    * @param track - The track to add
    */
-  addTrackToQueue = (track: Track) => {
+  public addTrackToQueue = (track: Track) => {
     const isTrackInQueue = this.queueTrack.some(
       (existingTrack) => existingTrack.id === track.id
     );
@@ -87,7 +87,7 @@ export class AudioManager {
    * Adds a track to the history list if not already present
    * @param track - The track to add
    */
-  addTrackToHistory = (track: Track) => {
+  public addTrackToHistory = (track: Track) => {
     const isTrackInHistory = this.history.some(
       (existingTrack) => existingTrack.id === track.id
     );
@@ -100,7 +100,7 @@ export class AudioManager {
   /**
    * Play the first track of the queue list
    */
-  playQueueTrack = () => {
+  public playQueueTrack = () => {
     if (this.queueTrack.length > 0) {
       this.setCurrentTrack(this.queueTrack[0]);
       this.queueTrack.shift();
@@ -110,7 +110,7 @@ export class AudioManager {
   /**
    * Play the last track of the history list
    */
-  playHistoryTrack = () => { // TODO : fix how it work
+  public playHistoryTrack = () => { // TODO : fix how it work
     if (this.history.length > 0) {
       const lastTrack = this.history[this.history.length - 2];
       console.log(lastTrack);
