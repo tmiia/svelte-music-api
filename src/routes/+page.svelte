@@ -29,10 +29,6 @@
 </script>
 
 <section class={section()}>
-	<h1>{data.playlist.title} • PLAYLIST</h1>
-</section>
-
-<section class={section()}>
 	<Slider>
 		{#each tracks as track}
 			<TrackCard {track} classes="flex-1" />
