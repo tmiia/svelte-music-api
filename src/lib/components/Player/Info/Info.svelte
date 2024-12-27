@@ -1,20 +1,14 @@
 <script lang="ts">
-	import { tv } from 'tailwind-variants';
+  import { styles } from './Info.css';
 	import { twJoin } from 'tailwind-merge';
   import { audioManager } from '$lib/components/AudioManager/AudioManager.svelte';
 	import BlankImage from '$lib/icons/blankImage.svelte';
 
-	const styles = tv({
-		slots: {
-			container: 'flex items-end lg:items-center space-x-2 lg:space-x-4',
-      cover: 'rounded-xl',
-      textContainer: 'overflow-hidden text-ellipsis whitespace-nowrap',
-      title: 'font-medium text-base text-white/85',
-      artist: 'font-light text-sm text-white/75'
-		}
-	});
-
-	let { classes = '' } = $props();
+  interface InfoProps {
+		classes?: string;
+	}
+	let { classes = '' }: InfoProps = $props();
+  
 	const { container, cover, textContainer, title, artist } = styles();
 </script>
 
