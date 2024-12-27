@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
-	import TrackCard from './TrackCard.svelte';
+	import TrackCard from './TrackCard/TrackCard.svelte';
 
 	const styles = tv({
 		slots: {

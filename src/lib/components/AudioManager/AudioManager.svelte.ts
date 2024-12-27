@@ -13,6 +13,7 @@ export interface Track {
     id: number;
     title: string;
     cover: string;
+    cover_big: string;
     cover_small: string;
   };
 
