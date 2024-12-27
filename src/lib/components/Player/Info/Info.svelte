@@ -8,8 +8,11 @@
 		classes?: string;
 	}
 	let { classes = '' }: InfoProps = $props();
-  
+
 	const { container, cover, textContainer, title, artist } = styles();
+
+  const songTitle = $derived(audioManager.currentTrack?.title ?? 'Select a song by');
+  const artistName = $derived(audioManager.currentTrack?.artist.name ?? 'Any artist');
 </script>
 
 <figure class={twJoin( classes, container() )}>
@@ -18,13 +21,9 @@
     {:else}
       <BlankImage />
   {/if}
+
   <figcaption class={textContainer()}>
-    {#if audioManager.currentTrack}
-      <h3 class={title()}>{audioManager.currentTrack.title}</h3>
-      <strong class={artist()}>{audioManager.currentTrack.artist.name}</strong>
-      {:else}
-      <h3 class={title()}>Select a song by</h3>
-      <strong class={artist()}>Any artist</strong>
-    {/if}
+    <h3 class={title()}>{songTitle}</h3>
+    <strong class={artist()}>{artistName}</strong>
   </figcaption>
 </figure>
