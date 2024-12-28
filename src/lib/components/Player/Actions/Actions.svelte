@@ -3,7 +3,7 @@
 	import { twJoin } from 'tailwind-merge';
 	import Play from '../Buttons/Play.svelte';
 	import Next from '../Buttons/Next.svelte';
-	import Previous from '../Buttons/Previous.svelte';
+	import Previous from '../Buttons/Previous/Previous.svelte';
 
 	interface ActionsProps {
 		classes?: string;
