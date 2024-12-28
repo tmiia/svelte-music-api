@@ -9,8 +9,8 @@
 	const { slider, sliderItems } = styles();
 </script>
 
-<div class={slider()}>
-	<div class={sliderItems()}>
+<ul class={slider()}>
+	<li class={sliderItems()}>
 		{@render children?.()}
-	</div>
-</div>
+	</li>
+</ul>
