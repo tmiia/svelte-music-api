@@ -3,7 +3,7 @@
 	import Queue from '$lib/icons/queue.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import { tv } from 'tailwind-variants';
-  import { audioManager } from '$lib/components/AudioManager/AudioManager.svelte';
+  import { audioManager } from '$lib/components/Store/AudioManager.svelte';
 
 	const styles = tv({
 		slots: {

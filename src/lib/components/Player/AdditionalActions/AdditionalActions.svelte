@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { styles } from './AdditionalActions.css';
 	import { twJoin } from 'tailwind-merge';
-	import { audioManager } from '$lib/components/AudioManager/AudioManager.svelte';
+	import { audioManager } from '$lib/components/Store/AudioManager.svelte';
 	import ListQueue from '$lib/icons/listQueue.svelte';
 
 	interface AdditionalActionsProps {

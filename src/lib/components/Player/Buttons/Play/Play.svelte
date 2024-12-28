@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { styles } from './Play.css';
 	import { twJoin } from 'tailwind-merge';
-	import { audioManager } from '$lib/components/AudioManager/AudioManager.svelte';
+	import { audioManager } from '$lib/components/Store/AudioManager.svelte';
 	import Play from '$lib/icons/play.svelte';
 
 	interface PlayProps {

@@ -2,7 +2,7 @@
 	import Play from '$lib/icons/play.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import { tv } from 'tailwind-variants';
-  import { audioManager, type Track } from '$lib/components/AudioManager/AudioManager.svelte';
+  import { audioManager, type Track } from '$lib/components/Store/AudioManager.svelte';
 
 
 	const styles = tv({
