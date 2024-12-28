@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { styles } from './ArtistCard.css';
 	import { twJoin } from 'tailwind-merge';
-	import type { Track } from '$lib/components/Store/AudioManager.svelte';
+	import type { Track } from '$lib/Store/AudioManager.svelte';
 
 	interface ArtistCardProps {
 		artist: Track['artist'];

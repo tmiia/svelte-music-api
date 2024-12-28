@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { styles } from './Next.css';
 	import { twJoin } from 'tailwind-merge';
-	import { audioManager } from '$lib/components/Store/AudioManager.svelte';
+	import { audioManager } from '$lib/Store/AudioManager.svelte';
 	import Next from '$lib/icons/next.svelte';
 
 	interface NextProps {
@@ -10,16 +10,16 @@
 	let { classes = '' }: NextProps = $props();
 	let isDisabled = $state(true);
 
-  const { btn } = styles();
+	const { btn } = styles();
 
-  /**
+	/**
 	 * Check if there is track in the audioManager queue list and update the state of `isDisabled`.
 	 */
 	$effect(() => {
 		isDisabled = audioManager.queueTrack.length === 0;
 	});
 
-  /**
+	/**
 	 * Play the next track in the queue.
 	 */
 	const onclick = () => {

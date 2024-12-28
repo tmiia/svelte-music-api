@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { styles } from './PlayButton.css';
 	import { twJoin } from 'tailwind-merge';
-	import { audioManager, type Track } from '$lib/components/Store/AudioManager.svelte';
+	import { audioManager, type Track } from '$lib/Store/AudioManager.svelte';
 	import Play from '$lib/icons/play.svelte';
 
 	interface PlayProps {

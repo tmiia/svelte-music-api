@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { styles } from './Previous.css';
 	import { twJoin } from 'tailwind-merge';
-	import { audioManager } from '$lib/components/Store/AudioManager.svelte';
+	import { audioManager } from '$lib/Store/AudioManager.svelte';
 	import Previous from '$lib/icons/previous.svelte';
 
 	interface PreviousProps {

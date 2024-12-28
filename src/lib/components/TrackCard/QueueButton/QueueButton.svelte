@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { styles } from './QueueButton.css';
 	import { twJoin } from 'tailwind-merge';
-	import { audioManager, type Track } from '$lib/components/Store/AudioManager.svelte';
+	import { audioManager, type Track } from '$lib/Store/AudioManager.svelte';
 	import Queue from '$lib/icons/queue.svelte';
 
 	interface QueueProps {

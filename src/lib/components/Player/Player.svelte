@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { styles } from './Player.css';
 	import { onMount } from 'svelte';
-	import { audioManager } from '$lib/components/Store/AudioManager.svelte';
+	import { audioManager } from '$lib/Store/AudioManager.svelte';
 	import Timeline from '$lib/components/Player/Timeline/Timeline.svelte';
 	import Actions from './Actions/Actions.svelte';
 	import AdditionalActions from './AdditionalActions/AdditionalActions.svelte';
