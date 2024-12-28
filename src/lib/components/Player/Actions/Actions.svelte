@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { styles } from './Actions.css';
 	import { twJoin } from 'tailwind-merge';
-	import Play from '../Buttons/Play.svelte';
+	import Play from '../Buttons/Play/Play.svelte';
 	import Next from '../Buttons/Next/Next.svelte';
 	import Previous from '../Buttons/Previous/Previous.svelte';
 
