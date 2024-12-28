@@ -2,7 +2,7 @@
   import { styles } from './TrackCard.css';
 	import { twJoin } from 'tailwind-merge';
   import type { Track } from '../Store/AudioManager.svelte';
-	import PlayButton from '../PlayButton.svelte';
+	import PlayButton from './PlayButton/PlayButton.svelte';
 	import QueueButton from '../QueueButton.svelte';
 
   interface TrackCardProps {
