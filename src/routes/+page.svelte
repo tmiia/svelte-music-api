@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ArtistCard from '$lib/components/ArtistCard.svelte';
+	import ArtistCard from '$lib/components/ArtistCard/ArtistCard.svelte';
 	import Slider from '$lib/components/Slider.svelte';
 	import TrackCard from '$lib/components/TrackCard/TrackCard.svelte';
 	import { tv } from 'tailwind-variants';

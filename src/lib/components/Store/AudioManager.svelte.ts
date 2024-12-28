@@ -20,6 +20,8 @@ export interface Track {
   artist: {
     id: number;
     name: string;
+    picture_medium: string;
+    nb_fan: number;
   };
 
   link?: string;
