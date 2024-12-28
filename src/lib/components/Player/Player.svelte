@@ -3,9 +3,9 @@
 	import { onMount } from 'svelte';
 	import { audioManager } from '$lib/components/Store/AudioManager.svelte';
 	import Timeline from '$lib/components/Player/Timeline/Timeline.svelte';
-	import Actions from '../Actions/Actions.svelte';
-	import AdditionalActions from '../AdditionalActions/AdditionalActions.svelte';
-	import Info from '../Info/Info.svelte';
+	import Actions from './Actions/Actions.svelte';
+	import AdditionalActions from './AdditionalActions/AdditionalActions.svelte';
+	import Info from './Info/Info.svelte';
 
 	let audio: HTMLAudioElement | null = $state(null);
 
