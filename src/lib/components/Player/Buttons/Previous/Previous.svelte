@@ -16,14 +16,14 @@
 	 * Check if there is track in the audioManager history list and update the state of `isDisabled`.
 	 */
 	$effect(() => {
-		isDisabled = audioManager.history.length === 0;
+		isDisabled = audioManager.queueTrack.length === 0;
 	});
 
 	/**
 	 * Play the previous track.
 	 */
 	const onclick = () => {
-		audioManager.playHistoryTrack();
+		audioManager.playPrevTrack();
 	};
 </script>
 

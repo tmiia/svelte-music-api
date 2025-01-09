@@ -23,7 +23,7 @@
 	 * Play the next track in the queue.
 	 */
 	const onclick = () => {
-		audioManager.playQueueTrack();
+		audioManager.playNextTrack();
 	};
 </script>
 
