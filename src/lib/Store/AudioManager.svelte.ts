@@ -33,15 +33,10 @@ export interface Track {
  * Manages the play / pause state and track queue for the audio player
  */
 export class AudioManager {
-  public currentTrack: Track | null = $state(null);
   public queueTrack: Track[] = $state([]);
-  /** Previously played tracks */
-  public history: Track[] = $state([]);
-
+  public currentIndex: number = $state(0);
+  public currentTrack: Track | null = $derived(this.queueTrack[this.currentIndex] ?? null);
   public isPlaying = $state(false);
-
-  /** Maximum number of tracks to keep in history */
-  private readonly MAX_HISTORY_SIZE = 50;
 
   /**
    * Sets the current track and play it
@@ -53,9 +48,9 @@ export class AudioManager {
       throw new Error('Invalid track: missing required properties');
     }
 
-    this.currentTrack = track;
+    this.currentIndex = this.queueTrack.length
     this.isPlaying = true;
-    this.addTrackToHistory(track)
+    this.addTrackToQueue(track)
   };
 
   /**
@@ -87,42 +82,22 @@ export class AudioManager {
   };
 
   /**
-   * Adds a track to the history list if not already present
-   * @param track - The track to add
+   * Play the previous track.
    */
-  public addTrackToHistory = (track: Track) => {
-    const isTrackInHistory = this.history.some(
-      (existingTrack) => existingTrack.id === track.id
-    );
-
-    if (!isTrackInHistory) {
-      this.history.push(track);
+  public playPrevTrack = () => {
+    if (this.currentIndex - 1 >= 0 ) {
+      this.currentIndex -= 1
     }
   };
 
   /**
-   * Play the first track of the queue list
+   * Play the next track.
    */
-  public playQueueTrack = () => {
-    if (this.queueTrack.length > 0) {
-      this.setCurrentTrack(this.queueTrack[0]);
-      this.queueTrack.shift();
+  public playNextTrack = () => {
+    if (this.currentIndex + 1 < this.queueTrack.length) {
+      this.currentIndex += 1
     }
   };
-
-  /**
-   * Play the last track of the history list
-   */
-  public playHistoryTrack = () => { // TODO : fix how it work
-    if (this.history.length > 0) {
-      const lastTrack = this.history[this.history.length - 2];
-      console.log(lastTrack);
-      this.history.pop();
-      this.history.unshift(lastTrack);
-      this.setCurrentTrack(lastTrack);
-    }
-  };
-
 }
 
 
