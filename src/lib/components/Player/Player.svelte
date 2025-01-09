@@ -14,8 +14,8 @@
 	 */
 	const handleEnded = () => {
 		audioManager.isPlaying = false;
-		if (audioManager.queueTrack.length > 0) {
-			audioManager.playQueueTrack();
+		if (audioManager.currentIndex < audioManager.queueTrack.length) {
+			audioManager.playNextTrack()
 		}
 	};
 
