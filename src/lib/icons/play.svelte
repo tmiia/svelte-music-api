@@ -3,7 +3,7 @@
 </script>
 
 {#if isPlaying}
-	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 		<path
 			d="M10.65 19.11V4.89C10.65 3.54 10.08 3 8.64 3H5.01C3.57 3 3 3.54 3 4.89V19.11C3 20.46 3.57 21 5.01 21H8.64C10.08 21 10.65 20.46 10.65 19.11Z"
 			fill="white"
@@ -15,7 +15,7 @@
 		/>
 	</svg>
 {:else}
-	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 		<path
 			d="M17.49 9.60001L5.6 16.77C4.9 17.19 4 16.69 4 15.87V7.87001C4 4.38001 7.77 2.20001 10.8 3.94001L15.39 6.58001L17.48 7.78001C18.17 8.19001 18.18 9.19001 17.49 9.60001Z"
 			fill="white"
