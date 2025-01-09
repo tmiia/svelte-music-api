@@ -3,8 +3,7 @@
 	import Slider from '$lib/components/Slider/Slider.svelte';
 	import TrackCard from '$lib/components/TrackCard/TrackCard.svelte';
 	import { tv } from 'tailwind-variants';
-	import Player from '$lib/components/Player/Player.svelte';
-
+	
 	const styles = tv({
 		slots: {
 			section: 'text-white p-4 flex flex-col gap-4'
@@ -44,5 +43,3 @@
 		{/each}
 	</Slider>
 </section>
-
-<Player />
