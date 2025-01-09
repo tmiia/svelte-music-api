@@ -1,21 +1,14 @@
 import axios from 'axios';
 
-async function getPlaylistData() {
-  try {
-    const response = await axios.get('https://api.deezer.com/playlist/13283495863');
-    return response.data;
-  } catch (error) {
-    console.error('Erreur lors de la récupération des données:', error);
-    return null;
-  }
-}
+const playlistUrl = 'https://api.deezer.com/playlist/13283495863'
+const artistUrlBase = 'https://api.deezer.com/artist/'
 
-async function getArtistData(id: number) {
+async function getData(url: string) {
   try {
-    const response = await axios.get(`https://api.deezer.com/artist/${id}`);
+    const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    console.error(`Erreur lors de la récupération des données de l'artiste ${id}:`, error);
+    console.error('Error during data extraction', error);
     return null;
   }
 }
@@ -24,7 +17,7 @@ export async function load() {
   const artistsId: number[] = [];
   const artists: any[] = [];
 
-  const playlist = await getPlaylistData();
+  const playlist = await getData(playlistUrl);
 
   if (!playlist) {
     return { playlist: null, artists: [] };
@@ -37,7 +30,9 @@ export async function load() {
     if (!artistsId.includes(artistId)) {
       artistsId.push(artistId);
 
-      const artistData = await getArtistData(artistId);
+      let url = `${artistUrlBase}${artistId}`
+
+      const artistData = await getData(url);
       if (artistData) {
         artists.push(artistData);
       }
