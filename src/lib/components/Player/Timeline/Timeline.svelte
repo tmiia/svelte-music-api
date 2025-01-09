@@ -96,6 +96,7 @@
 		);
 		border-radius: var(--radius);
 		height: var(--track-height);
+    margin-top: 0;
 	}
 
 	#js_duration_slider::-webkit-slider-runnable-track {
