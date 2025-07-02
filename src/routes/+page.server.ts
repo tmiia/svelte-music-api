@@ -25,7 +25,7 @@ export async function load() {
 
   const uniqueArtistIds = Array.from(new Set(
     playlist.tracks.data.map((track: any) => track.artist.id as number)
-  )).slice(0, 10) as number[];
+  )).slice(0, 15) as number[];
 
   const artistPromises = uniqueArtistIds.map(async (artistId: number) => {
     const url = `${artistUrlBase}${artistId}`;
