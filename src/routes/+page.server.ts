@@ -2,10 +2,13 @@ import axios from 'axios';
 
 const playlistUrl = 'https://api.deezer.com/playlist/13283495863'
 const artistUrlBase = 'https://api.deezer.com/artist/'
+const axiosInstance = axios.create({
+  timeout: 5000,
+});
 
 async function getData(url: string) {
   try {
-    const response = await axios.get(url);
+    const response = await axiosInstance.get(url);
     return response.data;
   } catch (error) {
     console.error('Error during data extraction', error);
@@ -14,30 +17,24 @@ async function getData(url: string) {
 }
 
 export async function load() {
-  const artistsId: number[] = [];
-  const artists: any[] = [];
-
   const playlist = await getData(playlistUrl);
 
   if (!playlist) {
     return { playlist: null, artists: [] };
   }
 
+  const uniqueArtistIds = Array.from(new Set(
+    playlist.tracks.data.map((track: any) => track.artist.id as number)
+  )).slice(0, 10) as number[];
 
-  for (const track of playlist.tracks.data) {
-    const artistId = track.artist.id;
+  const artistPromises = uniqueArtistIds.map(async (artistId: number) => {
+    const url = `${artistUrlBase}${artistId}`;
+    return await getData(url);
+  });
 
-    if (!artistsId.includes(artistId)) {
-      artistsId.push(artistId);
+  const artistsResults = await Promise.all(artistPromises);
 
-      let url = `${artistUrlBase}${artistId}`
-
-      const artistData = await getData(url);
-      if (artistData) {
-        artists.push(artistData);
-      }
-    }
-  }
+  const artists = artistsResults.filter(artist => artist !== null);
 
   return {
     playlist,
